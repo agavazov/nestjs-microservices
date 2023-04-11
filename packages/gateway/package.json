@@ -1,0 +1,69 @@
+{
+  "name": "holita-gateway",
+  "version": "0.0.1",
+  "author": "Alexander Gavazov",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://holita.com",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "ts-node scripts/build.ts && nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e:watch": "jest --watch --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.3.12",
+    "@nestjs/config": "^2.3.1",
+    "@nestjs/core": "^9.3.12",
+    "@nestjs/event-emitter": "^1.4.1",
+    "@nestjs/platform-express": "^9.3.12",
+    "@nestjs/microservices": "^9.3.12",
+    "class-validator": "^0.14.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^4.4.1",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.3.0",
+    "@nestjs/schematics": "^9.1.0",
+    "@nestjs/testing": "^9.3.12",
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "@types/supertest": "^2.0.12",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.7",
+    "source-map-support": "^0.5.21",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "holita-mailer",
+  "version": "0.0.1",
+  "author": "Alexander Gavazov",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://holita.com",
+  "scripts": {
+    "build": "ts-node scripts/build.ts && nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.3.12",
+    "@nestjs/core": "^9.3.12",
+    "@nestjs/platform-express": "^9.3.12",
+    "@nestjs/microservices": "^9.3.12",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.3.0",
+    "@nestjs/schematics": "^9.1.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.11",
+    "prettier": "^2.8.7",
+    "source-map-support": "^0.5.21",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  }
+}

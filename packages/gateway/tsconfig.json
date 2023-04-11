@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    // Compiling JS version
+    "target": "es2017",
+    "module": "commonjs",
+    // Strict
+    "strictPropertyInitialization": false,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    // Case-sensitive file names
+    "forceConsistentCasingInFileNames": true,
+    // Output compiling directory
+    "outDir": "./dist",
+    // Code directory
+    "rootDir": "./",
+    // Use better way to include libraries after compiling
+    "esModuleInterop": true,
+    // Append source map after compiling
+    "sourceMap": true,
+    // Remove code comments after compiling
+    "removeComments": false,
+    // Location of the paths param,
+    "baseUrl": "./",
+    // Generate d.ts files
+    "declaration": true,
+    // Library aliases (use `tsconfig-paths` to load them)
+    "paths": {
+    }
+  }
+}
