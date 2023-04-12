@@ -7,9 +7,11 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: '127.0.0.1',
-      port: 8002,
+      port: process.env.PORT,
     },
   });
-  app.listen();
+  await app.listen();
+
+  console.log(`MS listen at tcp://127.0.0.1:${process.env.PORT}`);
 }
-bootstrap();
+bootstrap().catch(console.error);

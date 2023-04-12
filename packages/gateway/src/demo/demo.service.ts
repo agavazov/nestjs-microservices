@@ -1,50 +1,47 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { EventEmitter2 } from '@nestjs/event-emitter';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class DemoService {
   constructor(
-    private eventEmitter: EventEmitter2,
-    @Inject('MAILER') private readonly msMailer: ClientProxy,
-  ) {}
-
-  async doDemo() {
-    await this.doLocalEmit();
-
-    return this.pingService();
+    @Inject('USERS') private readonly msUsers: ClientProxy,
+    @Inject('STATS') private readonly msStats: ClientProxy,
+  ) {
   }
 
-  async doLocalEmit() {
-    await this.eventEmitter.emitAsync('auth.registration', {
-      id: 1234,
-      email: 'demo@test.com',
-    });
-  }
+  async createUser() {
+    // Send SYNC message
+    const pattern = 'users.create';
+    const payload = {
+      email: 'alex@gavazov.net',
+      name: 'Alexander Gavazov',
+    };
 
-  async pingService() {
-    const startTs = Date.now();
-    const pattern = 'hello';
-    const payload = {};
-
-    let message;
+    let response;
+    let error;
     try {
-      message = await firstValueFrom(
-        this.msMailer.send<boolean>(pattern, payload),
-      );
+      console.log('>>>> Send request *users.create* to [users]');
+
+      response = await firstValueFrom<any>( this.msUsers.send<boolean>(pattern, payload) );
     } catch (e: Error | any) {
-      message = e?.message;
+      error = e?.message;
     }
 
-    this.msMailer.emit<number>(
-      'user_created',
-      'gateway date' + Date().toString(),
-    );
+    // Send ASYNC
+    if (!error) {
+      console.log('>>>> Emit *registration* to [stats]');
+      this.msStats.emit<number>('registration', {
+        userId: response?.userId,
+        email: payload.email,
+        name: payload.name,
+      });
+    }
 
+    // Return response to the client
     return {
-      message,
-      duration: Date.now() - startTs,
+      response,
+      error,
     };
   }
 }

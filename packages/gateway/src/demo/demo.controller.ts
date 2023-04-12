@@ -7,6 +7,6 @@ export class DemoController {
 
   @Get('/')
   protected async createUser() {
-    return this.demoService.doDemo();
+    return this.demoService.createUser();
   }
 }
