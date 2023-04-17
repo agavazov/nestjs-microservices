@@ -4,7 +4,7 @@
   "author": "Alexander Gavazov",
   "private": true,
   "license": "MIT",
-  "homepage": "https://github.com/agavazov/nestjs-microservices-demo",
+  "homepage": "https://github.com/agavazov/nestjs-microservices",
   "scripts": {
     "build": "ts-node scripts/build.ts && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

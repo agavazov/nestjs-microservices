@@ -11,7 +11,7 @@ export class DemoService {
   }
 
   async createUser() {
-    // Send SYNC message
+    // Send SYNC request
     const pattern = 'users.create';
     const payload = {
       email: 'alex@gavazov.net',

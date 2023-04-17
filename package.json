@@ -1,10 +1,10 @@
 {
-  "name": "nestjs-microservices-demo",
+  "name": "nestjs-microservices",
   "version": "0.0.1",
   "author": "Alexander Gavazov",
   "private": true,
   "license": "MIT",
-  "homepage": "https://github.com/agavazov/nestjs-microservices-demo",
+  "homepage": "https://github.com/agavazov/nestjs-microservices",
   "scripts": {
     "start-gateway": "npm --prefix packages/gateway run start",
     "start:dev-gateway": "npm --prefix packages/gateway run start:dev",
