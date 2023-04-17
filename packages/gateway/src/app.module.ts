@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { DemoModule } from './demo/demo.module';
+import { ClientModule } from './client/client.module';
 import { SettingsModule } from './settings/settings.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,8 +14,9 @@ import { SettingsModule } from './settings/settings.module';
     }),
 
     // Project modules
+    ClientModule,
     SettingsModule,
-    DemoModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],

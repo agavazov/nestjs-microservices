@@ -8,8 +8,8 @@ export class DemoController {
     return 'pong-mailer';
   }
 
-  @EventPattern('user_created')
-  async eventPingListener(data: any) {
-    console.log('>>eventPingListener<<<', data);
+  @EventPattern('registration')
+  async handleEvent(data: any) {
+    console.log(`~~USERS.REGISTRATION~~ Create new user "${JSON.stringify(data)}"`);
   }
 }

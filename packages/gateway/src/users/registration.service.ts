@@ -3,38 +3,40 @@ import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
-export class DemoService {
+export class RegistrationService {
   constructor(
     @Inject('USERS') private readonly msUsers: ClientProxy,
+    @Inject('MAILER') private readonly msMailer: ClientProxy,
     @Inject('STATS') private readonly msStats: ClientProxy,
   ) {
   }
 
-  async createUser() {
+  async createUser(user: any) {
     // Send SYNC request
-    const pattern = 'users.create';
-    const payload = {
-      email: 'alex@gavazov.net',
-      name: 'Alexander Gavazov',
-    };
 
     let response;
     let error;
     try {
-      console.log('>>>> Send request *users.create* to [users]');
+      console.log(`\n\n\n**USERS.REGISTRATION** Create new user "${user?.email}"`);
 
-      response = await firstValueFrom<any>( this.msUsers.send<boolean>(pattern, payload) );
+      const pattern = 'users.registration';
+      response = await firstValueFrom<any>( this.msUsers.send<boolean>(pattern, user) );
     } catch (e: Error | any) {
       error = e?.message;
     }
 
     // Send ASYNC
     if (!error) {
-      console.log('>>>> Emit *registration* to [stats]');
+      this.msMailer.emit<number>('registration', {
+        userId: response?.id,
+        email: user.email,
+        name: user.name,
+      });
+
       this.msStats.emit<number>('registration', {
-        userId: response?.userId,
-        email: payload.email,
-        name: payload.name,
+        userId: response?.id,
+        email: user.email,
+        name: user.name,
       });
     }
 

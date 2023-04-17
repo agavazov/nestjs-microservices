@@ -4,9 +4,9 @@ import { EventPattern } from '@nestjs/microservices';
 @Controller()
 export class RegistrationController {
   @EventPattern('users.create')
-  async eventPingListener(data: any) {
+  async handleEvent(data: any) {
     // Response
-    console.log(`>>>> Response for *users.create* / In data: ${JSON.stringify(data)}`);
+    console.log(`~~users.create~~ Create new user "${JSON.stringify(data)}"`);
 
     return {
       success: true,
