@@ -1,17 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { Transport } from '@nestjs/microservices';
+import { colors } from 'colors.ts';
+import { appConfig } from './app.config';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.TCP,
     options: {
-      host: '127.0.0.1',
-      port: process.env.PORT,
+      host: appConfig.host,
+      port: appConfig.port,
     },
   });
   await app.listen();
 
-  console.log(`MS listen at tcp://127.0.0.1:${process.env.PORT}`);
+  console.log(colors('red',`MAILER listen on tcp://${appConfig.host}:${appConfig.port}`));
 }
 bootstrap().catch(console.error);

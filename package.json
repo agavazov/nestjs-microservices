@@ -5,6 +5,9 @@
   "private": true,
   "license": "MIT",
   "homepage": "https://github.com/agavazov/nestjs-microservices",
+  "workspaces": [
+    "./packages/*"
+  ],
   "scripts": {
     "start-gateway": "npm --prefix packages/gateway run start",
     "start:dev-gateway": "npm --prefix packages/gateway run start:dev",
@@ -24,18 +27,16 @@
     "build": "concurrently \"npm:build-*\"",
     "test-e2e": "concurrently \"npm:test-e2e-*\"",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts,.js --fix",
-    "postinstall": "lerna bootstrap"
+    "lint:fix": "eslint . --ext .ts,.js --fix"
   },
   "dependencies": {
-    "concurrently": "^8.0.1",
-    "lerna": "^6.6.1"
+    "concurrently": "^8.2.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5"
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0"
   }
 }

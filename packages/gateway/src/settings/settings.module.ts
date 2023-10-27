@@ -1,11 +1,16 @@
 import { Module } from '@nestjs/common';
-import { MicroservicesModule } from '../microservices/microservices.module';
+import { ClientsModule } from '@nestjs/microservices';
+import { microservicesList } from '../microservices-list';
 import { HealthcheckController } from './healthcheck.controller';
 import { HealthcheckService } from './healthcheck.service';
 
 @Module({
-  imports: [MicroservicesModule],
+  imports: [
+    // Register all microservices
+    ClientsModule.register(microservicesList),
+  ],
   controllers: [HealthcheckController],
   providers: [HealthcheckService],
 })
-export class SettingsModule {}
+export class SettingsModule {
+}

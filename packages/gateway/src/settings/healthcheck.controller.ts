@@ -10,7 +10,7 @@ export class HealthcheckController {
     return this.healthcheckService.getAll();
   }
 
-  @Get('/microservices')
+  @Get('/.del_microservices')
   protected async microservices() {
     return this.healthcheckService.microservices();
   }

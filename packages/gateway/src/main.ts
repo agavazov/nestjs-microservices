@@ -1,14 +1,14 @@
 import { NestFactory } from '@nestjs/core';
+import { colors } from 'colors.ts';
+import { appConfig } from './app.config';
 import { AppModule } from './app.module';
-import { AppConfigService } from './shared/app-config.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Listen
-  const config = app.get(AppConfigService);
-  await app.listen(config.port, config.host, () => {
-    console.log(`Listen on http://${config.host}:${config.port}`);
+  await app.listen(appConfig.port, appConfig.host, () => {
+    console.log(colors('green',`Gateway listen on http://${appConfig.host}:${appConfig.port}`));
   });
 }
 

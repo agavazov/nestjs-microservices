@@ -1,16 +1,35 @@
-import { Controller, } from '@nestjs/common';
-import { EventPattern } from '@nestjs/microservices';
+import { Controller, Inject } from '@nestjs/common';
+import { ClientProxy, EventPattern } from '@nestjs/microservices';
+import { colors } from 'colors.ts';
 
 @Controller()
 export class RegistrationController {
-  @EventPattern('users.create')
-  async handleEvent(data: any) {
-    // Response
-    console.log(`~~users.create~~ Create new user "${JSON.stringify(data)}"`);
+  constructor(
+    @Inject('USERS') private readonly msUsers: ClientProxy,
+    @Inject('MAILER') private readonly msMailer: ClientProxy,
+    @Inject('STATS') private readonly msStats: ClientProxy,
+  ) {
+  }
 
-    return {
+  @EventPattern('users.reg')
+  async handleEvent(data: any) {
+    console.log(
+      colors('blue', `\n[users.request] {registration}\n${JSON.stringify(data, null, 2)}\n`)
+    );
+
+    const user = {
       success: true,
       userId: Math.floor(Date.now() / 1000),
-    };
+      ...data
+    }
+
+    console.log(colors('blue', `\n[users.emit] {users.reg}\n${JSON.stringify(user, null, 2)}\n`));
+
+    // Send ASYNC
+    this.msMailer.emit<number>('users.reg', user);
+    this.msStats.emit<number>('users.reg', user);
+
+    // Response
+    return user;
   }
 }

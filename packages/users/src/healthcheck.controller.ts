@@ -5,6 +5,8 @@ import { MessagePattern } from '@nestjs/microservices';
 export class HealthcheckController {
   @MessagePattern('healthcheck')
   async healthcheck() {
+    console.log('YES');
+
     return true;
   }
 }
