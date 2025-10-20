@@ -14,6 +14,6 @@ async function bootstrap() {
   });
   await app.listen();
 
-  console.log(colors('blue',`USERS listen on tcp://${appConfig.host}:${appConfig.port}`));
+  console.log(colors('blue',`USERS listening on tcp://${appConfig.host}:${appConfig.port}`));
 }
 bootstrap().catch(console.error);

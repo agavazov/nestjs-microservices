@@ -14,6 +14,6 @@ async function bootstrap() {
   });
   await app.listen();
 
-  console.log(colors('red',`MAILER listen on tcp://${appConfig.host}:${appConfig.port}`));
+  console.log(colors('red',`MAILER listening on tcp://${appConfig.host}:${appConfig.port}`));
 }
 bootstrap().catch(console.error);

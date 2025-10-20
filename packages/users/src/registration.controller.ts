@@ -25,11 +25,11 @@ export class RegistrationController {
 
     console.log(colors('blue', `\n[users.emit] {users.reg}\n${JSON.stringify(user, null, 2)}\n`));
 
-    // Send ASYNC
+    // Send asynchronous events
     this.msMailer.emit<number>('users.reg', user);
     this.msStats.emit<number>('users.reg', user);
 
-    // Response
+    // Return the response
     return user;
   }
 }

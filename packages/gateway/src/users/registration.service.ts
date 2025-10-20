@@ -13,7 +13,7 @@ export class RegistrationService {
   }
 
   async createUser(user: any) {
-    // Send SYNC request
+    // Send a synchronous request
     let response;
     let error;
     try {
@@ -27,7 +27,7 @@ export class RegistrationService {
       error = e?.message;
     }
 
-    // Send ASYNC
+    // Send asynchronous events
     // if (!error) {
     //   this.msMailer.emit<number>('registration', {
     //     userId: response?.id,
@@ -42,7 +42,7 @@ export class RegistrationService {
     //   });
     // }
 
-    // Return response to the client
+    // Return the response to the client
     return {
       response,
       error,

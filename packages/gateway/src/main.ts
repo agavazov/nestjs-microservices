@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // Listen
   await app.listen(appConfig.port, appConfig.host, () => {
-    console.log(colors('green',`Gateway listen on http://${appConfig.host}:${appConfig.port}`));
+    console.log(colors('green',`Gateway listening on http://${appConfig.host}:${appConfig.port}`));
   });
 }
 

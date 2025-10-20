@@ -10,7 +10,7 @@ export class DemoController {
         body { max-width: 500px; margin: 20px auto; }
       </style>
 
-      <h2>Create new user &mdash; [post]/users/registration/</h2>
+      <h2>Create a new user &mdash; [post]/users/registration/</h2>
 
       <hr/>
 

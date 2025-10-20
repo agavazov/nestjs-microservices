@@ -11,8 +11,8 @@ const dest = path.join(__dirname, './../dist');
 const allowedExt: string[] = [];
 
 /**
- * Everything is compiled by tsc no extra help is needed
- * This script is cleaning the dist directory and copy non TS files (rm -rf is not cross-os option)
+ * Everything is compiled by tsc; no extra help is needed.
+ * This script cleans the dist directory and copies non-TS files (rm -rf is not a cross-OS option).
  */
 class Build {
   /**

@@ -27,7 +27,7 @@ export class DemoController {
       colors('red', `\n[mailer.emit] mailer.welcome\n "Welcome ${data.email} <${data.name}>"\n`)
     );
 
-    // Send ASYNC
+    // Send asynchronous events
     this.msStats.emit<number>('mailer.welcome', data);
   }
 }

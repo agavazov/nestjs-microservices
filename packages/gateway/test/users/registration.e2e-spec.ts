@@ -29,7 +29,7 @@ describe('Users / Registration (e2e)', () => {
       .expect((res: Response) => {
         console.log('res?.body res?.body res?.body', res?.body);
         if (typeof res?.body?.id === 'string') {
-          throw new Error('id is not missing or is not in correct format');
+          throw new Error('id is missing or not in the correct format');
         }
       });
   });

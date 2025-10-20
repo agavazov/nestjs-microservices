@@ -34,7 +34,7 @@ export class HealthcheckService {
   }
 
   async microservices(): Promise<Microservice[]> {
-    // Check all .del_microservices
+    // Check all microservices
     const microservices: Microservice[] = [];
 
     try {
